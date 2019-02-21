@@ -1,0 +1,15 @@
+.navbar-nav{
+  /*display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;*/
+}
+.mr-auto{
+  /*margin-right: auto!important;*/
+}
+a {
+  color: mediumblue;
+}
+.navbar-brand{
+  background-color: aquamarine;
+}
