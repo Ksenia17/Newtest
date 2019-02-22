@@ -36,5 +36,40 @@ Project.create! name: "16 Project", user_id: 4
 Project.create! name: "17 Project", user_id: 2
 Project.create! name: "18 Project", user_id: 3
 Project.create! name: "19 Project", user_id: 1
-Project.create! name: "20 Project",user_id: 1
-
+Project.create! name: "20 Project", user_id: 1
+# tasks
+task = Task.new(name: "Task 1",
+                project_id: 1,
+                user_id: 1,
+                status_flg: false,
+                deadline: nil,
+                priority: 1)
+task.save!
+task = Task.new(name: "Task 2",
+                project_id: 2,
+                user_id: 2,
+                status_flg: false,
+                deadline: nil,
+                priority: 2)
+task.save!
+task = Task.new(name: "Task 3",
+                project_id: 3,
+                user_id: 3,
+                status_flg: false,
+                deadline: nil,
+                priority: 3)
+task.save!
+task = Task.new(name: "Task 4",
+                project_id: 4,
+                user_id: 4,
+                status_flg: false,
+                deadline: nil,
+                priority: 4)
+task.save!
+task = Task.new(name: "Task 5",
+                project_id: 5,
+                user_id: 4,
+                status_flg: false,
+                deadline: nil,
+                priority: 5)
+task.save!

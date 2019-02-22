@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :projects
+  has_many :tasks
 
   validates :first_name,  presence: true, length: { maximum: 20 }
   validates :last_name,   presence: true, length: { maximum: 30 }

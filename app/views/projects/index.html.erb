@@ -1,4 +1,4 @@
-<h4>All projects</h4>
+<h4>My projects</h4>
 <p></p>
 <div class="table-responsive"> 
 <%= link_to "Add new project", new_project_path %>
@@ -6,12 +6,17 @@
    <tr class="table-primary">
       <th>N</th>
       <th>Name</th>
+      <th>current_user.id</th>
+      <th>project.user_id</th>
       <th></th>
       </tr>
     <% @projects.each do |project|%>
       <tr>
         <td><%= project.id %></td>
         <td><%= project.name %></td>
+        <td><%= current_user.id %></td>
+        <td><%= project.user_id %></td>
+
         <td><%= link_to "Tasks of project  /", "#" %>
             <%= link_to "Update  /", edit_project_path(project)%>
             <%= link_to "Delete", project_path(project),
