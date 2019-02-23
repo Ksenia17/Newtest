@@ -1,18 +1,26 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message(:notice, :signed_up) if is_navigational_format?
+    sign_up(resource_name, resource)
+  
+    redirect_to projects_path(current_user)
+  end
+
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+     super
+   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -25,9 +33,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+   def destroy
+     super
+   end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -38,7 +46,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+
+
+  # If you have extra params to permit, append them to the sanitizer.
+   def configure_sign_up_params
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

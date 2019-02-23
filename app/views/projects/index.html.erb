@@ -1,30 +1,36 @@
-<h4>My projects</h4>
-<p></p>
-<div class="table-responsive"> 
-<%= link_to "Add new project", new_project_path %>
- <table class="table table-hover table-bordered">
-   <tr class="table-primary">
-      <th>N</th>
-      <th>Name</th>
-      <th>current_user.id</th>
-      <th>project.user_id</th>
-      <th></th>
-      </tr>
-    <% @projects.each do |project|%>
-      <tr>
-        <td><%= project.id %></td>
-        <td><%= project.name %></td>
-        <td><%= current_user.id %></td>
-        <td><%= project.user_id %></td>
+<div class="gradient">
+  <h4>My projects</h4>
+  <p></p>
+  <div style="padding: 10px 0"></div>
+  <%= link_to "Add new project", new_project_path %>
+  <div style="padding: 10px 0"></div>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+       <thead>
+           <tr class="table-primary">
+              <th>N</th>
+              <th>Name</th>
+              <th>current_user.id</th>
+              <th>project.user_id</th>
+              <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project|%>
+            <tr>
+              <td><%= project.id %></td>
+              <td><%= project.name %></td>
+              <td><%= current_user.id %></td>
+              <td><%= project.user_id %></td>
 
-        <td><%= link_to "Tasks of project  /", "#" %>
-            <%= link_to "Update  /", edit_project_path(project)%>
-            <%= link_to "Delete", project_path(project),
-                                  method: :delete,
-                                  data: {confirm: "Are you sure delete book"} %></td>
-        
-      </tr>
-    <% end %>
- </table>
- 
+              <td><%= link_to "Tasks of project  /", "#" %>
+                  <%= link_to "Update  /", edit_project_path(project)%>
+                  <%= link_to "Delete", project_path(project),
+                                        method: :delete,
+                                        data: {confirm: "Are you sure delete book"} %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+   </div>
 </div>
