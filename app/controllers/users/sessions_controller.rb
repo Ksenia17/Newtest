@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
   
-    redirect_to project_tasks_path(current_user)
+    redirect_to projects_path(current_user) #project_tasks_path(current_user)
   end
 
   

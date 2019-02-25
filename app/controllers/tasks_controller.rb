@@ -2,8 +2,9 @@ class TasksController < ApplicationController
   before_action :authenticate_user! #for devise
 
   def index
-    @projects = Project.find(params[:project_id])
-    @tasks = @projects.tasks
+    #@projects = Project.find(params[:project_id])
+    @projects = Project.where(user_id: current_user.id) 
+    @tasks =  Task.where(user_id: current_user.id )  #@projects.tasks.all
   end
 
   def create
@@ -26,7 +27,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     @task.destroy
-
+    # redirect_to action "index"
     redirect_to project_tasks_path(@project), :notice => "Task was successfully deleted "
   end
 

@@ -36,7 +36,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    # будет проверка на наличие tasks
+    @project = Project.destroy(params[:id])
+    # будет проверка на наличие tasks 
+
+    # redirect_to action "index"
+    redirect_to projects_path, :notice => "Project was successfully deleted "
   end
 
 

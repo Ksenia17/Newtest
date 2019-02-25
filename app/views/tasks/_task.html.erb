@@ -1,0 +1,5 @@
+<%= form_for task do |f| %>
+<%= f.submit "Update" %>
+
+<%= link_to "(remove)", task, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %> 

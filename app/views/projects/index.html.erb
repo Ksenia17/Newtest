@@ -1,11 +1,23 @@
 <div class="gradient">
-  <h4>My projects</h4>
-  <p></p>
-  <div style="padding: 10px 0"></div>
-  <%= link_to "Add new project", new_project_path %>
-  <div style="padding: 10px 0"></div>
+
+  <nav class="navbar navbar-primary bg-primary">
+  <span class="navbar-text">
+    My projects
+  </span>
+</nav>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-success" type="button">+</button>
+    </div>
+    <input type="text" class="form-control" placeholder="Start typing here to create a project .." aria-label="" aria-describedby="basic-addon1">
+    <div class="input-group-append">
+      <button class="btn btn-outline-success" type="button">Add Project</button>
+    </div>
+</div>   
+
   <div class="table-responsive">
-    <table class="table table-hover table-bordered">
+    <table class="projects table table-hover table-bordered ">
        <thead>
            <tr class="table-primary">
               <th>N</th>
@@ -17,17 +29,17 @@
         </thead>
         <tbody>
           <% @projects.each do |project|%>
-            <tr>
+            <tr data-project_id = "<%= project.id%>">
               <td><%= project.id %></td>
               <td><%= project.name %></td>
               <td><%= current_user.id %></td>
               <td><%= project.user_id %></td>
 
-              <td><%= link_to "Tasks of project  /", "#" %>
+              <td>
                   <%= link_to "Update  /", edit_project_path(project)%>
                   <%= link_to "Delete", project_path(project),
                                         method: :delete,
-                                        data: {confirm: "Are you sure delete book"} %></td>
+                                        data: { 'project_id' => true} %></td>
             </tr>
           <% end %>
       </tbody>
