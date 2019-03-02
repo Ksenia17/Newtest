@@ -1,7 +1,5 @@
-<%= form_for @task  do |f| %>
+<%= form_for @task remote: true do |f| %>
+<%= f.check_box :status_flg %>
 <%= f.text_field :name %>
-<%= f.text_field :status_flg %>
-<%= f.text_field :deadline %>
-<%= f.text_field :priority %>
 <%= f.submit %>
 <% end %> 

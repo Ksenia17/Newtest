@@ -1,0 +1,59 @@
+<!-- <div class='gradient'> -->
+  <nav class="navbar navbar-primary bg-primary">
+    <span class="navbar-text">
+      <%= project.name %>
+    </span>
+
+    <span id='edit_project_<%= project.id %>' class='ui-icon ui-icon-pencil edit_project'></span>
+    <span id='delete_project_<%= project.id %>" class='ui-icon ui-icon-trash delete_project'></span>
+  
+  </nav>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-success" type="button">+</button>
+  </div>
+  <input type="text" class="form-control" placeholder="Start typing here to create a task .." aria-label="" aria-describedby="basic-addon1">
+  <div class="input-group-append">
+    <button class="btn btn-outline-success" type="button">Add Task</button>
+  </div>
+
+
+</div> 
+
+<% project.tasks.each do |task| %>
+  <div class="row">
+    <div class="col-md-1"><%= check_box_tag class: 'custom-control-input'  %> </div>
+    <div class="col-md-10"><span class="input-group-text" id=""><%= task.name %> </span> </div>
+    <div class="col-md-1">
+      
+      <span id='caret_task<%= task.id %>' class='ui-icon ui-icon-caret-2-n-s caret_task'></span><span>|</span>
+      <span id='edit_task<%= task.id %>' class='ui-icon ui-icon-pencil'></span><span>|</span>
+      <span id='delete_task<%= task.id %>' class='ui-icon ui-icon-trash delete_task'></span>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<!-- <% project.tasks.each do |task| %>
+  <div class="col-xs-12">
+    <div class="form-group">
+      <%= check_box_tag "", class: 'custom-control-input'  %>
+      <span>|</span>
+      
+      <div class="input-group-append">
+        <%= task.name %> 
+      </div>
+      
+      <div class="input-group-append">
+        <span id='edit_task<%= task.id %>' class='ui-icon ui-icon-pencil'></span>
+      </div>
+
+    </div>   
+  </div>   
+<% end %>-->
+
+<!-- </div> -->

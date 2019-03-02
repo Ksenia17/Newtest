@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
+.container, .gradient{
+  max-width: 960px;
+  
+}
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        
+      }

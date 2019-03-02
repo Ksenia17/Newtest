@@ -1,48 +1,11 @@
-<div class="gradient">
 
-  <nav class="navbar navbar-primary bg-primary">
-  <span class="navbar-text">
-    My projects
-  </span>
-</nav>
+<h1>SIMPLE TODO LISTS</h1>
+<h6>FROM RUBY GARAGE</h6>
+  
+  <div class="new"><%= link_to "New Project", new_project_path, id: "new_link", remote: true %></div>
+    
+    <div class="projects" id="projects">
+      
+      <%= render @projects %>   
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <button class="btn btn-outline-success" type="button">+</button>
-    </div>
-    <input type="text" class="form-control" placeholder="Start typing here to create a project .." aria-label="" aria-describedby="basic-addon1">
-    <div class="input-group-append">
-      <button class="btn btn-outline-success" type="button">Add Project</button>
-    </div>
-</div>   
-
-  <div class="table-responsive">
-    <table class="projects table table-hover table-bordered ">
-       <thead>
-           <tr class="table-primary">
-              <th>N</th>
-              <th>Name</th>
-              <th>current_user.id</th>
-              <th>project.user_id</th>
-              <th></th>
-            </tr>
-        </thead>
-        <tbody>
-          <% @projects.each do |project|%>
-            <tr data-project_id = "<%= project.id%>">
-              <td><%= project.id %></td>
-              <td><%= project.name %></td>
-              <td><%= current_user.id %></td>
-              <td><%= project.user_id %></td>
-
-              <td>
-                  <%= link_to "Update  /", edit_project_path(project)%>
-                  <%= link_to "Delete", project_path(project),
-                                        method: :delete,
-                                        data: { 'project_id' => true} %></td>
-            </tr>
-          <% end %>
-      </tbody>
-    </table>
-   </div>
-</div>
+  </div>

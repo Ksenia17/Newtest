@@ -1,0 +1,28 @@
+
+
+<%= form_for project, remote: true do |f| %>
+  <form >
+    
+      <div class="form-row  head  p-3 mb-2 bg-primary text-white">
+        <div class="col-10">
+          <label><%= f.label :complete, project.name %></label> 
+        </div>
+
+        <div class="col-1">
+          <button type="submit" class="">Update</button>
+          
+        </div>
+        <div class="col-1">
+          
+          <button type="submit" class=""><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+        </div>
+
+      </div>
+  
+  </form>
+
+
+
+
+<% end %>  
+

@@ -1,46 +1,47 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user! #for devise
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
+  before_action :find_project, only: [:edit, :update, :destroy]
   
   def index
-    @projects = Project.where(user_id: current_user.id) 
+    @projects = current_user.projects
   end
 
   def new
     @project = Project.new
   end
 
-  def show
-  end
-
   def create
     @project = Project.create!(allowed_params)
-
-    redirect_to projects_path
+    @project.user_id = current_user.id
+    @project.save
+    
+    respond_to do |f|
+    f.html { redirect_to projects_url }
+    f.js
+    end
   end
 
   def edit
-    
   end
 
   def update
+      @project = Project.find(params[:id])
     
-    if @project.update(allowed_params)
-      if @project.errors.empty?
-        redirect_to project_path(@project), :notice => "Project was successfully updated"
-      end
-      else
-        @errors = @project.errors
-        render 'edit'
-    end
+      @project.update_attributes!(allowed_params)
+        respond_to do |f|
+        f.html { redirect_to projects_url }
+        f.js
+        end
+        
   end
 
   def destroy
     @project = Project.destroy(params[:id])
     # будет проверка на наличие tasks 
-
-    # redirect_to action "index"
-    redirect_to projects_path, :notice => "Project was successfully deleted "
+    respond_to do |f|
+    f.html { redirect_to projects_url }
+    f.js
+    end
   end
 
 

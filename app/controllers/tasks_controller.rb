@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   before_action :authenticate_user! #for devise
 
-  def index
-    #@projects = Project.find(params[:project_id])
-    @projects = Project.where(user_id: current_user.id) 
-    @tasks =  Task.where(user_id: current_user.id )  #@projects.tasks.all
+
+  def edit
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
   end
+
 
   def create
     @project = Project.find(params[:project_id])
@@ -19,9 +20,18 @@ class TasksController < ApplicationController
 
   end
 
-  def show
+  def update
+    @project = Project.find(params[:id])
     @task = Task.find(params[:id])
+
+      @task.update_attributes!(task_params)
+        respond_to do |f|
+        f.html { redirect_to projects_url }
+        f.js
+        end
+    
   end
+
 
   def destroy
     @project = Project.find(params[:project_id])
@@ -31,6 +41,11 @@ class TasksController < ApplicationController
     redirect_to project_tasks_path(@project), :notice => "Task was successfully deleted "
   end
 
+  private
+
+  def task_params
+    params.require(:task).permit(:name)
+  end
 
 
 end

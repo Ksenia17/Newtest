@@ -4,7 +4,42 @@
 
 
 
-table.projects{
- 
-
+.tabletask{
+ background: white;
 } 
+.ui-icon{
+  cursor:pointer;
+}
+h1{
+  color:black;
+  padding-top:50px;
+  font-size: 2.5rem;
+  text-align: center!important;
+}
+h6{
+  color:grey;
+  font-size: 1.5rem;
+  text-align: center;
+  
+}
+.hidden{
+  display:none;
+}
+.head{
+  max-width:850px;
+  padding:20px 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+.pictRemove{
+  background-image:"assets/trash-alt-regular.svg";
+}
+.pictUpdate{
+  background-image:"assets/edit.svg";
+}
+.new{
+  max-width:850px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
