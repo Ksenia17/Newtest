@@ -11,10 +11,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create!(allowed_params)
-    @project.user_id = current_user.id
-    @project.save
     
+    @project = current_user.projects.create!(allowed_params)
+     
     respond_to do |f|
     f.html { redirect_to projects_url }
     f.js
@@ -36,8 +35,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    
     @project = Project.destroy(params[:id])
-    # будет проверка на наличие tasks 
+   
     respond_to do |f|
     f.html { redirect_to projects_url }
     f.js

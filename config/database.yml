@@ -27,7 +27,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
-  database: garage
+  database: garage_test
   username: socbet_user
   password: socbet123
   host: localhost

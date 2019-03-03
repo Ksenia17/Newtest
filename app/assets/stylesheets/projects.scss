@@ -2,7 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.projects{
+  max-width:850px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
 
 .tabletask{
  background: white;
@@ -27,7 +33,7 @@ h6{
 }
 .head{
   max-width:850px;
-  padding:20px 0;
+  padding-top:20px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -42,4 +48,27 @@ h6{
   margin-right: auto;
   margin-left: auto;
 }
-
+h5{
+  color:white;
+  font-size: 1.0rem;
+  text-align: center;
+  margin: 50px 0;
+  padding: 40px 0;
+}
+.head1{
+  background: gainsboro;
+  max-width:850px;
+  margin-right: auto;
+  margin-left: auto;  
+}
+.centr{
+  margin-right: auto;
+  margin-left: auto;  
+}
+.head2{
+  background: white;
+  max-width:850px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px 0;
+}

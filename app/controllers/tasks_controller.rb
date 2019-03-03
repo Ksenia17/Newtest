@@ -2,31 +2,37 @@ class TasksController < ApplicationController
   before_action :authenticate_user! #for devise
 
 
+  def index
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
+  end
+
   def edit
     @project = Project.find(params[:project_id])
-    @task = Task.find(params[:id])
+    @task = @project.tasks.find(params[:id])
   end
 
 
   def create
-    @project = Project.find(params[:project_id])
-
-    @task = @project.tasks.build
-    @task.user_id = current_user.user_id
-
-    if @task.save
-      redirect_to project_task_path(project_id: @project.id, id: @task.id), :notice => "New task was successfully created"
-    end
-
+    
+    @project = current_user.find(params[:project_id])
+    
+    @task = @project.tasks.create!(task_params)
+    
+    respond_to do |f|
+    f.html { redirect_to project_task_url(@project) }
+    f.js
+    end    
+    
   end
 
   def update
-    @project = Project.find(params[:id])
-    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
 
       @task.update_attributes!(task_params)
         respond_to do |f|
-        f.html { redirect_to projects_url }
+        f.html { redirect_to project_tas_url(@project) }
         f.js
         end
     
@@ -34,11 +40,16 @@ class TasksController < ApplicationController
 
 
   def destroy
+
     @project = Project.find(params[:project_id])
-    @task = Task.find(params[:id])
+    @task = @project.tasks.find(params[:id])
+
     @task.destroy
-    # redirect_to action "index"
-    redirect_to project_tasks_path(@project), :notice => "Task was successfully deleted "
+
+    respond_to do |f|
+    f.html { redirect_to project_tas_url(@project) }
+    f.js
+    end
   end
 
   private

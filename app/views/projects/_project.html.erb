@@ -1,9 +1,8 @@
-
+<div class="projects" id="projects">
 
 <%= form_for project, remote: true do |f| %>
-  <form >
-    
-      <div class="form-row  head  p-3 mb-2 bg-primary text-white">
+  
+    <div class="form-row  head  p-3 mb-2 bg-primary text-white">
         <div class="col-10">
           <label><%= f.label :complete, project.name %></label> 
         </div>
@@ -19,10 +18,42 @@
 
       </div>
   
-  </form>
-
-
-
-
+ 
 <% end %>  
 
+
+<%= form_tag  project_tasks_path(project), remote: true do   %>
+  
+  <div class="form-row head1 ">
+ 
+    <button class="btn btn-outline-success" type="button"><%= link_to " + ", new_project_task_path(project), id: "new_link", remote: true %></button>
+    <div class="col-10">
+      <input type="text" class="form-control" placeholder="Start typing here to create a task .." aria-label="" >
+    </div>
+    <div class="centr">
+      <button class="btn btn-outline-success" type="button">Add task</button> 
+    </div>
+  </div>
+
+<%end%>
+
+
+
+<% project.tasks.each do |task| %>
+  <div class="form-row head2 ">
+     
+    <div class="col-10">
+      <span class="label"><%= task.name %> </span>
+    </div>
+    <div class="col-1 centr">
+      <button type="submit" class=""><%= link_to "Remove", project_tasks_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+     <!--  <span id='edit_task_<%= task.id %>' class='ui-icon ui-icon-pencil'></span><span>|</span>
+      <span id='delete_task_<%= task.id %>' class='ui-icon ui-icon-trash delete_task'></span> -->
+    </div>
+  </div>  
+ 
+
+<% end %>
+
+
+</div>

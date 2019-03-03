@@ -6,70 +6,44 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #users
-user = User.new(first_name: "Ivan",
+user1 = User.create(first_name: "Ivan",
                 last_name: "Ivanov",
                 email: "iv1@ukr.net",
                 password: "admin123")
-user.save!
-user = User.new(first_name: "Sofia",
+
+user2 = User.create(first_name: "Sofia",
                 last_name: "Petrova",
                 email: "petrova1@ukr.net",
                 password: "87654321")
-user.save!
-user = User.new(first_name: "Mari",
+
+user3 = User.create(first_name: "Mari",
                 last_name: "Mixeeva",
                 email: "mari-mari1@ukr.net",
                 password: "1234567")
-user.save!
-user = User.new(first_name: "Igor",
+
+user4 = User.create(first_name: "Igor",
                 last_name: "Kolesnic",
                 email: "ig1@ukr.net",
                 password: "12041968")
-user.save!
+
+
 # projects
-Project.create! name: "11 Project", user_id: 1
-Project.create! name: "12 Project", user_id: 2 
-Project.create! name: "13 Project", user_id: 3
-Project.create! name: "14 Project", user_id: 3
-Project.create! name: "15 Project", user_id: 4
-Project.create! name: "16 Project", user_id: 4
-Project.create! name: "17 Project", user_id: 2
-Project.create! name: "18 Project", user_id: 3
-Project.create! name: "19 Project", user_id: 1
-Project.create! name: "20 Project", user_id: 1
+project1 = user1.projects.create(name: "Project 1")
+project2 = user2.projects.create(name: "Project 2")
+project3 = user3.projects.create(name: "Project 3")
+
+
 # tasks
-task = Task.new(name: "Task 1",
-                project_id: 1,
-                user_id: 1,
+task1 =project1.tasks.create(name: "Task 1",
                 status_flg: false,
                 deadline: nil,
                 priority: 1)
-task.save!
-task = Task.new(name: "Task 2",
-                project_id: 2,
-                user_id: 2,
+
+task2 =project2.tasks.create(name: "Task 2",
                 status_flg: false,
                 deadline: nil,
-                priority: 2)
-task.save!
-task = Task.new(name: "Task 3",
-                project_id: 3,
-                user_id: 3,
+                priority: 1)
+task3 =project3.tasks.create(name: "Task 3",
                 status_flg: false,
                 deadline: nil,
-                priority: 3)
-task.save!
-task = Task.new(name: "Task 4",
-                project_id: 4,
-                user_id: 4,
-                status_flg: false,
-                deadline: nil,
-                priority: 4)
-task.save!
-task = Task.new(name: "Task 5",
-                project_id: 5,
-                user_id: 4,
-                status_flg: false,
-                deadline: nil,
-                priority: 5)
-task.save!
+                priority: 1)

@@ -1,11 +1,11 @@
-<!-- <div class='gradient'> -->
+<!-- 
   <nav class="navbar navbar-primary bg-primary">
     <span class="navbar-text">
       <%= project.name %>
     </span>
 
     <span id='edit_project_<%= project.id %>' class='ui-icon ui-icon-pencil edit_project'></span>
-    <span id='delete_project_<%= project.id %>" class='ui-icon ui-icon-trash delete_project'></span>
+    <span id='delete_project_<%= project.id %>' class='ui-icon ui-icon-trash delete_project'></span>
   
   </nav>
 
@@ -20,7 +20,46 @@
   </div>
 
 
-</div> 
+</div>  -->
+
+
+<%= form_for project, remote: true do |f| %>
+  
+    
+      <div class="form-row  head  p-3 mb-2 bg-primary text-white">
+        <div class="col-10">
+          <label><%= f.label :complete, project.name %></label> 
+        </div>
+
+        <div class="col-1">
+          <button type="submit" class="">Update</button>
+          
+        </div>
+        <div class="col-1">
+          
+          <button type="submit" class=""><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+        </div>
+
+      </div>
+  
+  
+<% end %>  
+
+<%= form_tag  project_tasks_path(project), remote: true do   %>
+  
+  <div class="form-row">
+  
+    <button class="btn btn-outline-success" type="button">+</button>
+  
+  <input type="text" class="form-control" placeholder="Start typing here to create a task .." aria-label="" aria-describedby="basic-addon1">
+  
+    <button class="btn btn-outline-success" type="button">Add Task</button>
+  </div>
+
+<%end%>
+
+
+
 
 <% project.tasks.each do |task| %>
   <div class="row">
@@ -56,4 +95,3 @@
   </div>   
 <% end %>-->
 
-<!-- </div> -->

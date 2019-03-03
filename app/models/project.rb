@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
   has_many :tasks, dependent: :destroy
   
   validates :name,    presence: true
-
+  validates :user_id, presence: true
 end

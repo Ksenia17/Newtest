@@ -1,0 +1,4 @@
+('#new_task').remove();
+$('#new_link_task').show();
+$('#tasks').append('<%= j render(@task) %>')
+$('#edit_task_<%= @task.id %>').submitOnCheck();

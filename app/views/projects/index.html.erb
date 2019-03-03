@@ -2,10 +2,13 @@
 <h1>SIMPLE TODO LISTS</h1>
 <h6>FROM RUBY GARAGE</h6>
   
-  <div class="new"><%= link_to "New Project", new_project_path, id: "new_link", remote: true %></div>
-    
-    <div class="projects" id="projects">
-      
-      <%= render @projects %>   
+<div class="new">
+  <button class="button btn-link btn-outline-primary "><%= link_to " + Add TODO List", new_project_path, id: "new_link", remote: true %></button>
+</div>    
+<div class="projects" id="projects">
+  <% @projects.each  do |project| %>
+    <%= render  partial: 'project', locals: {project: project}%>
+  <%end%>
+</div>
 
-  </div>
+<h5>© Ruby Garage</h5>
