@@ -35,6 +35,7 @@ test: &test
   port: 5432
 
 production:
+  <<: *default
   adapter: postgresql
   database: garage
   username: socbet_user
