@@ -1,5 +1,12 @@
-<%= form_for task, remote: true do |f| %>
-  <%= f.submit "Update" %>
-  <%= f.label task.name %>
-  <%= link_to "(remove)", task, method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %> 
+<div class="tasks", id="edit_task_<%= task.id%>">
+  <div class="tasks form-row head2  border border-secondary">
+     <div class="col-10">    
+      <span class="label" ><%= task.name %> </span>
+    </div>
+    <div class="col-1 centr">
+      <button type="submit" class=""><%= link_to "Remove", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+    </div>
+  </div>
+</div>  
+
+

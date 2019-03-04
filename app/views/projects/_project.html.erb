@@ -1,16 +1,16 @@
-<div class="projects" id="projects">
+<div class="projects" id="project_<%= project.id %>">
 
 <%= form_for project, remote: true do |f| %>
   
     <div class="form-row  head  p-3 mb-2 bg-primary text-white">
-        <div class="col-10">
+        <div class="col-11">
           <label><%= f.label :complete, project.name %></label> 
         </div>
 
-        <div class="col-1">
+        <!-- <div class="col-1">
           <button type="submit" class="">Update</button>
           
-        </div>
+        </div> -->
         <div class="col-1">
           
           <button type="submit" class=""><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
@@ -26,34 +26,22 @@
   
   <div class="form-row head1 ">
  
-    <button class="btn btn-outline-success" type="button"><%= link_to " + ", new_project_task_path(project), id: "new_link", remote: true %></button>
-    <div class="col-10">
-      <input type="text" class="form-control" placeholder="Start typing here to create a task .." aria-label="" >
+<!--     <%= link_to " + ", new_project_task_path(project), id: "new_link_#{project.id}", remote: true, class: 'btn btn-outline-success disabled' %>
+ -->    <div class="col-10">
+      <input type="text" name='task[name]' class="form-control " placeholder="Start typing here to create a task .." aria-label="", id='new_task_name_<%= project.id %>' >
     </div>
     <div class="centr">
-      <button class="btn btn-outline-success" type="button">Add task</button> 
+      <button class="btn btn-outline-success" type="submit">Add task</button> 
     </div>
   </div>
 
 <%end%>
 
 
-
-<% project.tasks.each do |task| %>
-  <div class="form-row head2 ">
-     
-    <div class="col-10">
-      <span class="label"><%= task.name %> </span>
-    </div>
-    <div class="col-1 centr">
-      <button type="submit" class=""><%= link_to "Remove", project_tasks_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
-     <!--  <span id='edit_task_<%= task.id %>' class='ui-icon ui-icon-pencil'></span><span>|</span>
-      <span id='delete_task_<%= task.id %>' class='ui-icon ui-icon-trash delete_task'></span> -->
-    </div>
-  </div>  
- 
-
-<% end %>
-
+  <div id='project_tasks_<%= project.id%>'>
+    <% project.tasks.each do |task| %>
+     <%= render partial: 'tasks/task', locals: { project: project, task: task } %>
+    <% end %>
+  </div>
 
 </div>

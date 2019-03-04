@@ -1,4 +1,2 @@
-('#new_task').remove();
-$('#new_link_task').show();
-$('#tasks').append('<%= j render(@task) %>')
-$('#edit_task_<%= @task.id %>').submitOnCheck();
+$('#new_task_name_<%= @project.id %>').val('')
+$('#project_tasks_<%= @project.id %>').append('<%= j render(partial: 'task', locals: { project: @project ,task: @task  }) %>')
