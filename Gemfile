@@ -5,8 +5,7 @@ ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
- gem 'sqlite3', group: :development
- gem 'pg', '0.18.1', group: :production
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
@@ -30,7 +29,7 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor', '0.0.2' 
+  gem 'rails_12factor', '0.0.2'
 end  
 
 group :test do
