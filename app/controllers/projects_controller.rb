@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+
   def create
     
     @project = current_user.projects.create!(allowed_params)
@@ -21,18 +22,21 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project =  Project.find(params[:id])
+    respond_to do |f|
+      f.html  ##{ redirect_to projects_url }
+      f.js
+      end
   end
 
-  def update
-      @project = Project.find(params[:id])
-    
+   def update
+      @project = Project.find(params[:id]) 
       @project.update_attributes!(allowed_params)
         respond_to do |f|
-        f.html { redirect_to projects_url }
-        f.js
-        end
-        
-  end
+         f.html { redirect_to projects_url }
+         f.js
+         end
+   end
 
   def destroy
     
