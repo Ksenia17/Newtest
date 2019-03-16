@@ -1,3 +1,6 @@
-<% if @project.complete? %>
-  $('#edit_project_<%= @project.id %>').appendTo('#projects');
-<% end %> 
+
+  $('#edit_project_name_<%= @project.id %>').replaceWith('<label><%= @project.name%></label>');
+
+  $('#edit_link').show();
+
+  $('#edit_project_<%= @project.id %>').hide();
