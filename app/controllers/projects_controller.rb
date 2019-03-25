@@ -22,14 +22,16 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    
     @project =  Project.find(params[:id])
     respond_to do |f|
-      f.html  ##{ redirect_to projects_url }
+      f.html  { redirect_to projects_url }
       f.js
       end
   end
 
    def update
+    
       @project = Project.find(params[:id]) 
       @project.update_attributes!(allowed_params)
         respond_to do |f|
