@@ -1,13 +1,15 @@
-<div class="form-row  head  p-3 mb-2 bg-primary text-white" id="project_label_<%= project.id %>">
-        <div class="col-10">
-          <label id="edit_name_<%= project.id %>"><%= project.name %></label> 
-        </div>
+<div class="projects" id="project_label_<%= project.id %>">
+  <div class="projects form-row  p-3 mb-2 bg-primary text-white" >
+          <div class="col-10">
+            <label id="edit_name_<%= project.id %>"><%= project.name %></label> 
+          </div>
 
-        <div class="col-1 edit">
-          <button type="submit" class="btn-link"><%= link_to "Edit", edit_project_path(project), id: "edit_link",remote: true %></button>
-        </div>
+          <div class="col-1 edit">
+            <button type="submit" class="btn-link"><%= link_to "Edit", edit_project_path(project), id: "edit_link",remote: true %></button>
+          </div>
 
-        <div class="col-1">
-          <button type="submit" class="btn-link"><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
-        </div>
+          <div class="col-1">
+            <button type="submit" class="btn-link"><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+          </div>
+  </div>
 </div>
