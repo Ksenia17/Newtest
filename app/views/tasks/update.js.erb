@@ -1,3 +1,1 @@
-<% if @ptask.complete? %>
-  $('#edit_task_<%= @task.id %>').appendTo('#tasks');
-<% end %> 
+$('#edit_form_task_<%= @task.id %>').replaceWith('<%= j render(partial: 'task', locals: { project: @project, task: @task }) %>');
