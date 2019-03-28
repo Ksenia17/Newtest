@@ -1,0 +1,6 @@
+<div class="tasks form-row head2  border border-secondary" id="edit_form_task_<%= @task.id%>">
+  <%= form_for [@project, @task], remote: true do |f| %>
+     <%= f.text_field :name %>
+     <%= f.submit %>
+  <% end %>
+</div>

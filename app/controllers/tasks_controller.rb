@@ -5,6 +5,11 @@ class TasksController < ApplicationController
   def edit
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
+      
+      respond_to do |f|
+      f.html  { redirect_to project_tasks_url(@project) }
+      f.js
+      end
   end
 
 

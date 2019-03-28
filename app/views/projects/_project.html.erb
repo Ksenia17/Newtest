@@ -1,32 +1,8 @@
 <div class="projects" id="project_<%= project.id %>">
-
-<!--   <%= form_for project, remote: true do |f| %>  -->
   
-    <div class="form-row  head  p-3 mb-2 bg-primary text-white">
-        <div class="col-10">
-          <label id="edit_name_<%= project.id %>"><%= f.label :complete, project.name ,id: "edit_prog" %></label> 
-            <input name='project[name]'  type="text" class="form-control hidden" id='edit_project_name_<%= project.id %>' >
-          </div>
-
-        <div class="col-1 edit">
-          <button type="submit" class="btn-link"><%= link_to "Edit", edit_project_path(project), id: "edit_link",remote: true %></button>
-        </div>
-
-         <!-- <div class="col-1">
-          <button type="submit" class="">Update</button>
-         </div> -->
-
-
-        <div class="col-1">
-          
-          <button type="submit" class="btn-link"><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
-        </div>
-
-      </div>
-  
- 
-<!--    <% end %>  -->
-
+  <div class="projects" id="edit_project_<%= project.id %>" >
+    <%= render  partial: 'editproj', locals: {project: project}%>
+  </div>
 
 <%= form_tag  project_tasks_path(project), remote: true do   %>
   

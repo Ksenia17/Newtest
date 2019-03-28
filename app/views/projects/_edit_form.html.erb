@@ -1,0 +1,6 @@
+<div class="projects form-row p-3 mb-2 bg-primary text-white " id="form_edit_<%= @project.id %>">
+  <%= form_for @project, remote: true do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+</div>
