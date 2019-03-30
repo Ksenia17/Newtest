@@ -27,7 +27,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development do
   gem 'listen'
 end
-
+group :development, :test do
+  gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
 group :production do
   gem 'rails_12factor', '0.0.2'
 end  
@@ -47,5 +51,3 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
-
-
