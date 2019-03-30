@@ -12,7 +12,6 @@ class TasksController < ApplicationController
       end
   end
 
-
   def create
     @project = current_user.projects.find(params[:project_id])
     
@@ -55,8 +54,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name,:status_flg)
   end
-
 
 end

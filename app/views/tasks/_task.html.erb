@@ -1,6 +1,15 @@
 <div class="tasks" id="edit_task_<%= task.id%>">
-  <div class="tasks form-row head2   ">
-     <div class="col-md-10 border-right border-bottom border-secondary">
+  <div class="tasks form-row head2 ">
+
+    <div class="col-1"> 
+      <% if  task.status_flg %>
+        <div class="form-check disabled "><input id='check_task_<%= task.id %>' class="form-check-input disabled" type="checkbox" name="check" id="check1" value="option1" checked disabled></div>
+      <%else%>
+        <div class="form-check disabled "><input id='check_task_<%= task.id %>' class="form-check-input disabled " type="checkbox" name="check" id="check1" value="option1" disabled></div>
+      <% end %>
+    </div>
+
+     <div class="col-9 border-left border-right border-bottom border-secondary">
       <span class="label" ><%= task.name %> </span>
     </div>
       <button type="submit" class=""><%= link_to "Edit", edit_project_task_path(project,task), id: "edit_task_link",remote: true %></button>
