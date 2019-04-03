@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_194651) do
     t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "status"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 

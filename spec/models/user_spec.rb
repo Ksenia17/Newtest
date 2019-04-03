@@ -1,16 +1,13 @@
-require 'spec_helper'
-require 'pry'
+require 'rails_helper' 
 
 describe 'User' do
 
-  let(:user) do
-    create(:user) 
-  end 
+  it 'returns one item' do
 
- let!(:user) {FactoryBot.create(:user)}
+    let!(:user) {create(:user, email:"mari@ukr.net", password: "12345")}
 
-it 'first' do
-  expect(user.first_name).to_eq 'Second'
-end  
+
+    expect(user.first_name).to_eq 'Second'
+  end  
 
 end
