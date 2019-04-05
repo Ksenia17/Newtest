@@ -1,20 +1,24 @@
-<div class="tasks" id="edit_task_<%= task.id%>">
-  <div class="tasks form-row head2 ">
+<ul id="sortable">
+  <li class="ui-state-default"><div class="tasks" id="edit_task_<%= task.id%>" draggable="true">
 
-    <div class="col-1"> 
-      <% if  task.status_flg %>
-        <div class="form-check disabled "><input id='check_task_<%= task.id %>' class="form-check-input disabled" type="checkbox" name="check" id="check1" value="option1" checked disabled></div>
-      <%else%>
-        <div class="form-check disabled "><input id='check_task_<%= task.id %>' class="form-check-input disabled " type="checkbox" name="check" id="check1" value="option1" disabled></div>
-      <% end %>
-    </div>
+      <div class="tasks form-row head2 ">
 
-     <div class="col-9 border-left border-right border-bottom border-secondary">
-      <span class="label" ><%= task.name %> </span>
-    </div>
-      <button type="submit" class=""><%= link_to "Edit", edit_project_task_path(project,task), id: "edit_task_link",remote: true %></button>
-      <button type="submit" class=""><%= link_to "Remove", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
-    </div>
-</div>  
+        <div class="col-1"> 
+        </div>
+
+        <div class="col-9 border-left border-right border-bottom border-secondary">
+          <span class="label" ><%= task.name %> </span>
+        </div>
+          
+        
+          <div ><span id='caret_task<%= task.id %>' class='ui-icon ui-icon-caret-2-n-s caret_task'></span><span>|</span></div>
+          <button type="submit" class=""><%= link_to "Edit", edit_project_task_path(project,task), id: "edit_task_link",remote: true %></button><span>|</span>
+          <button type="submit" class=""><%= link_to "Remove", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+        
+      </div>
+    </div>  
+  </li>
+</ul>
+ 
 
 

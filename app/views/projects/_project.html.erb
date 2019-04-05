@@ -19,11 +19,9 @@
 
 <%end%>
 
-
-  <div id='project_tasks_<%= project.id%>'>
-    <% project.tasks.each do |task| %>
-     <%= render partial: 'tasks/task', locals: { project: project, task: task } %>
-    <% end %>
-  </div>
+<div id='project_tasks_<%= project.id%>' >
+      <% project.tasks.each do |task| %>
+            <%= render partial: 'tasks/task', locals: { project: project, task: task } %>
+      <% end %>
 
 </div>
