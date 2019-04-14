@@ -7,4 +7,3 @@ jQuery.fn.submitOnCheck = function() {
 $(function() {
     $('.edit_project').submitOnCheck();
 });
-
