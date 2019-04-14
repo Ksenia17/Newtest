@@ -1,1 +1,2 @@
 $('#edit_form_task_<%= @task.id %>').replaceWith('<%= j render(partial: 'task', locals: { project: @project, task: @task }) %>');
+$('#date_form_<%= @task.id %>').replaceWith('<%= j render(partial: 'task', locals: { project: @project, task: @task }) %>');

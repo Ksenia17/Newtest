@@ -3,14 +3,14 @@
 
       <div class="tasks form-row head2 ">
             <div>
-
+              <button type="submit"  class="btn btn-outline-primary btn-sm"><i class='far fa-calendar-alt' ></i><%= link_to "date",deadline_project_task_path(project,task), id: "edit_date",remote: true %></button>
             </div>
            <div class="col-1" align="center">
             <%= form_tag complete_project_task_path(project,task), authenticity_token: true, id: "edit_check_#{task.id}", method: :post, remote: true do %> 
               <%= check_box_tag 'status_flg', true, task.status_flg, { onchange: "var element = $('#edit_check_#{task.id}')[0]; Rails.fire(element, 'submit')" } %>
             <% end%>
           </div>
-        <div class="col-9 border-left border-right border-bottom border-secondary">
+        <div class="col-8 border-left border-right border-bottom border-secondary">
           <span class="label" ><%= task.name %> </span>
         </div>
           

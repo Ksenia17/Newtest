@@ -13,16 +13,15 @@ class TasksController < ApplicationController
     end
   end
 
-  # def deadline
-    
-  #   @project = current_user.projects.find(params[:project_id])
-  #   @task = @project.tasks.find(params[:task_id])
+  def deadline
+    @project = current_user.projects.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
       
-  #     respond_to do |f|
-  #     f.html  { redirect_to project_tasks_url(@project) }
-  #     f.js
-  #     end
-  # end
+      respond_to do |f|
+      f.html  { redirect_to project_tasks_url(@project) }
+      f.js
+      end
+  end
 
   def create
     @project = current_user.projects.find(params[:project_id])
@@ -37,6 +36,7 @@ class TasksController < ApplicationController
   end
 
   def update
+
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
 
