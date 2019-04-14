@@ -3,7 +3,7 @@
 
       <div class="tasks form-row head2 ">
             <div>
-<!--               <button type="submit"  class="btn btn-outline-primary btn-sm"><i class='far fa-calendar-alt' ></i><%= link_to " date",project_task_deadline_path(project,task), id: "edit_date",remote: true %></button> -->
+
             </div>
            <div class="col-1" align="center">
             <%= form_tag complete_project_task_path(project,task), authenticity_token: true, id: "edit_check_#{task.id}", method: :post, remote: true do %> 
