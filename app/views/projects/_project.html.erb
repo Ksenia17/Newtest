@@ -1,27 +1,26 @@
 <div class="projects" id="project_<%= project.id %>">
-  
   <div class="projects" id="edit_project_<%= project.id %>" >
-    <%= render  partial: 'editproj', locals: {project: project}%>
+      <%= render  partial: 'editproj', locals: {project: project}%>
   </div>
 
-<%= form_tag  project_tasks_path(project), remote: true do   %>
+  <%= form_tag  project_tasks_path(project), remote: true do   %>
   
   <div class="form-row head1 ">
- 
-<!--     <%= link_to " + ", new_project_task_path(project), id: "new_link_#{project.id}", remote: true, class: 'btn btn-outline-success disabled' %>
- -->    <div class="col-10">
-      <input type="text" name='task[name]' class="form-control " placeholder="Start typing here to create a task .." aria-label="", id='new_task_name_<%= project.id %>' >
-    </div>
-    <div class="centr">
-      <button class="btn btn-outline-success" type="submit">Add task</button> 
-    </div>
+    
+     <div class="col-10">
+        <input type="text" name='task[name]' class="form-control " placeholder="Start typing here to create a task .." aria-label="", id='new_task_name_<%= project.id %>' >
+      </div>
+      <div class="centr">
+        <button class="btn btn-outline-success" type="submit">Add task</button> 
+      </div>
   </div>
 
-<%end%>
+  <%end%>
 
-<div id='project_tasks_<%= project.id%>' >
+  <div id='project_tasks_<%= project.id%>'>
       <% project.tasks.each do |task| %>
-            <%= render partial: 'tasks/task', locals: { project: project, task: task } %>
-      <% end %>
 
+          <%= render partial: 'tasks/task', locals: { project: project, task: task } %>
+      <% end %>
+  </div>
 </div>

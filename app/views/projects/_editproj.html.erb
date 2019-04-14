@@ -3,11 +3,9 @@
           <div class="col-10">
             <span class="label" id="edit_name_<%= project.id %>"><%= project.name %></span> 
           </div>
-          <div class="col-1">
-            <button type="submit" class="btn-link"><%= link_to "Edit", edit_project_path(project), id: "edit_link",remote: true %></button>
-          </div>
-          <div class="col-1">
-            <button type="submit" class="btn-link"><%= link_to "Remove", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+          <div class="col-2">
+            <button type="submit" class="btn btn-primary  btn-sm"><i class='fas fa-pen' ></i> <%= link_to "Edit", edit_project_path(project), id: "edit_link",remote: true %>
+            <button type="submit" class="btn btn-primary  btn-sm"><i class='far fa-trash-alt' ></i><%= link_to "Del", project, method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
           </div>
   </div>
 </div>

@@ -1,16 +1,28 @@
 class TasksController < ApplicationController
   before_action :authenticate_user! #for devise
+  respond_to :html, :js
 
 
   def edit
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
       
-      respond_to do |f|
+    respond_to do |f|
       f.html  { redirect_to project_tasks_url(@project) }
       f.js
-      end
+    end
   end
+
+  # def deadline
+    
+  #   @project = current_user.projects.find(params[:project_id])
+  #   @task = @project.tasks.find(params[:task_id])
+      
+  #     respond_to do |f|
+  #     f.html  { redirect_to project_tasks_url(@project) }
+  #     f.js
+  #     end
+  # end
 
   def create
     @project = current_user.projects.find(params[:project_id])
@@ -18,8 +30,8 @@ class TasksController < ApplicationController
     @task = @project.tasks.create!(task_params)
     
     respond_to do |f|
-    f.html { redirect_to project_tasks_url(@project) }
-    f.js
+      f.html { redirect_to project_tasks_url(@project) }
+      f.js
     end    
     
   end
@@ -28,14 +40,27 @@ class TasksController < ApplicationController
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
 
-      @task.update_attributes!(task_params)
-        respond_to do |f|
-        f.html { redirect_to project_tasks_url(@project) }
-        f.js
-        end
-    
+    @task.update_attributes!(task_params)
+    respond_to do |f|
+      f.html { redirect_to project_tasks_url(@project) }
+      f.js
+    end
   end
 
+  def complete
+    @project = current_user.projects.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    if params['status_flg']
+      @task.status_flg = params['status_flg']
+    else
+      @task.status_flg = false
+    end
+    @task.save
+    
+    respond_to do |f|
+      f.js
+    end
+  end
 
   def destroy
    
@@ -54,7 +79,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name,:status_flg)
+    params.require(:task).permit(:name,:status_flg, :deadline)
   end
+
 
 end
