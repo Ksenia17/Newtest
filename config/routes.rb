@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :projects, only:[:new,:create,:index,:show,:edit,:update,:destroy] do
     resources :tasks, only:[:new,:create,:index,:show,:edit,:update,:destroy] do
       get  :deadline, on: :member
-      post :deadline, on: :member
       post :complete, on: :member
     end
   end
