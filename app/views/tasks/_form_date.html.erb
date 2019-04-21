@@ -10,7 +10,11 @@
 
 
   $(function() {
-    $("#datepicker").datepicker();
+    $("#datepicker").datepicker({
+      showMinute: false,
+      dateFormat: 'yy-mm-dd',
+      ampm: true
+    });
   });
 
   $(".submitDisplayBtn").click(function(){
