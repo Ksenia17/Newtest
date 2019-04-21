@@ -62,6 +62,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def determine
+    @project = current_user.projects.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+
+    respond_to do |f|
+    f.js
+    end
+  end
+
+
   def destroy
    
     @project =  current_user.projects.find(params[:project_id])
