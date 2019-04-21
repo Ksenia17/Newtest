@@ -1,7 +1,7 @@
 <div class="tasks form-row head2  border border-secondary" id="date_form_task_<%= @task.id%>">
-  <%= form_for [@project, @task], remote: true do |f| %>
+  <%= form_for [@project, @task], authenticity_token: true, class: 'DateForm',remote: true do |f| %>
     <%= f.text_field :deadline, id: 'datepicker' %>
-     <%= f.submit 'Set deadline'%>
+     <%= f.submit 'Set deadline', class: 'submitDisplayBtn btn btn-outline-success'%>
   <% end %>
 </div>
 
