@@ -3,16 +3,18 @@
 
       <div class="tasks form-row head2 ">
 
+
            <div class="col-1" align="center">
             <%= form_tag complete_project_task_path(project,task), authenticity_token: true, id: "edit_check_#{task.id}", method: :post, remote: true do %> 
               <%= check_box_tag 'status_flg', true, task.status_flg, { onchange: "var element = $('#edit_check_#{task.id}')[0]; Rails.fire(element, 'submit')" } %>
             <% end%>
           </div>
-        <div class="col-9 border-left border-right border-bottom border-secondary">
+        <div class="col-8 border-left border-right border-bottom border-secondary">
           <span class="label" ><%= task.name %> </span>
         </div>
           
         <button type="submit" class="btn btn-outline-primary btn-sm"><%= link_to "Edit", edit_project_task_path(project,task), id: "edit_task_link",remote: true %></button><span>|</span>
+
         <button type="submit" class="btn btn-outline-primary btn-sm"></i><%= link_to " Remove ", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
         
       </div>

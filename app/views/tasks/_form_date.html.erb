@@ -1,0 +1,26 @@
+<div class="tasks form-row head2  border border-secondary" id="date_form_task_<%= @task.id%>">
+  <%= form_for [@project, @task], authenticity_token: true, class: 'DateForm',remote: true do |f| %>
+    <%= f.text_field :deadline, id: 'datepicker' %>
+     <%= f.submit 'Set deadline', class: 'submitDisplayBtn btn btn-outline-success'%>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function(){
+
+
+  $(function() {
+    $("#datepicker").datepicker({
+      showMinute: false,
+      dateFormat: 'yy-mm-dd',
+      ampm: true
+    });
+  });
+
+  $(".submitDisplayBtn").click(function(){
+    $(".DateForm").attr('method','post');
+  });
+
+
+  });
+</script>
