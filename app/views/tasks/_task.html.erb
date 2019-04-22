@@ -3,6 +3,9 @@
 
       <div class="tasks form-row head2 ">
 
+          <div class="col-1" align="center"  >
+              <button type="submit"  class="btn btn-outline-primary btn-sm"><%= link_to "Deadline", determine_project_task_path(project,task), id: "edit_date",remote: true %></button> 
+            </div>
 
            <div class="col-1" align="center">
             <%= form_tag complete_project_task_path(project,task), authenticity_token: true, id: "edit_check_#{task.id}", method: :post, remote: true do %> 
@@ -15,7 +18,7 @@
           
         <button type="submit" class="btn btn-outline-primary btn-sm"><%= link_to "Edit", edit_project_task_path(project,task), id: "edit_task_link",remote: true %></button><span>|</span>
 
-        <button type="submit" class="btn btn-outline-primary btn-sm"></i><%= link_to " Remove ", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
+        <button type="submit" class="btn btn-outline-primary btn-sm"><%= link_to "Remove ", project_task_path(project,task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></button>
         
       </div>
     </div>  
