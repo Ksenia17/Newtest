@@ -3,11 +3,17 @@
 
       <div class="tasks form-row head2 ">
 
-          <div class="col-1" align="center"  >
-              <button type="submit"  class="btn btn-outline-primary btn-sm"><%= link_to "Deadline", determine_project_task_path(project,task), id: "edit_date",remote: true %></button> 
-            </div>
+          <div class="col-1" align="center" >
+             <button type="submit"  class="btn btn-outline-primary btn-sm">
+               <% if task.deadline %>
+                  <%= link_to "#{task.deadline}", determine_project_task_path(project,task), id: "edit_date_#{task.id}",remote: true %> 
+               <% else %>
+                  <%= link_to "Deadline", determine_project_task_path(project,task), id: "edit_date_#{task.id}",remote: true %>
+               <% end %>
+             </button> 
+          </div>
 
-           <div class="col-1" align="center">
+           <div class="col-1" align="right">
             <%= form_tag complete_project_task_path(project,task), authenticity_token: true, id: "edit_check_#{task.id}", method: :post, remote: true do %> 
               <%= check_box_tag 'status_flg', true, task.status_flg, { onchange: "var element = $('#edit_check_#{task.id}')[0]; Rails.fire(element, 'submit')" } %>
             <% end%>
